@@ -40,9 +40,13 @@ export class AreasListaComponent implements OnInit {
     .subscribe(
       response => {
         this.mensagemSucesso = 'Área deletada com sucesso!',
+        this.mensagemErro = '';
         this.ngOnInit();
       },
-      erro => this.mensagemErro = 'Ocorreu um erro ao deletar a área.'
+      erro => {
+        this.mensagemErro = 'Ocorreu um erro ao deletar a área.',
+        this.mensagemSucesso = ""
+      }
     )
   }
 

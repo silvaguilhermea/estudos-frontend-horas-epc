@@ -10,7 +10,7 @@ import { environment } from '../environments/environment'
 })
 export class SetoresService {
 
-  apiURL: string = environment.apiURLBase + '/api/setores';
+  apiURL: string = environment.apiURLBase + '/setores';
 
   constructor( private http: HttpClient ) { }
   

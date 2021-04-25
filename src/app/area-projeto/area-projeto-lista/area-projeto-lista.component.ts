@@ -38,6 +38,7 @@ export class AreaProjetoListaComponent implements OnInit {
   }
 
   consultar() {
+    console.log(this.area);
     this.service
       .buscar( this.area )
       .subscribe( response => {
@@ -45,7 +46,7 @@ export class AreaProjetoListaComponent implements OnInit {
         if( this.lista.length <= 0 ){
           this.message = "Nenhum registro encontrado.";
         } else {
-          this.message = '';
+          this.message = 'Registro(s) encontrado(s)';
         }
       });
   }

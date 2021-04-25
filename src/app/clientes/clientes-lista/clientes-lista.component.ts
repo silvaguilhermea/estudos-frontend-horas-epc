@@ -40,10 +40,14 @@ export class ClientesListaComponent implements OnInit {
     .deletar( this.clienteSelecionado )
     .subscribe(
       response => {
-        this.mensagemSucesso = 'Usuário deletado com sucesso!',
+        this.mensagemSucesso = 'Usuário deletado com sucesso!';
+        this.mensagemErro = '';
         this.ngOnInit();
       },
-      erro => this.mensagemErro = 'Ocorreu um erro ao deletar o usuário.'
+      erro => {
+        this.mensagemErro = 'Ocorreu um erro ao deletar o usuário.';
+        this.mensagemSucesso = '';
+      }
     )
   }
 }

@@ -35,10 +35,14 @@ export class AreaProjetoFormComponent implements OnInit {
     let params : Params = this.activatedRoute.params
     if(params && params.value && params.value.id){
       this.id = params.value.id;
+      console.log(this.id);
       this.service
       .getAreaProjetoById( this.id )
       .subscribe(
-        response => this.areaProjeto = response,
+        response => {
+          this.areaProjeto = response,
+          console.log("Nome" + this.areaProjeto.nmProjeto)
+        },
         errorResponse => this.areaProjeto = new AreaProjeto()
       )
     }

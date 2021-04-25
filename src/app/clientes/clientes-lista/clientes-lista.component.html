@@ -40,11 +40,11 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let cliente of clientes">
-                        <td>{{ cliente.id }}</td>
-                        <td>{{ cliente.nome }}</td>
-                        <td>{{ cliente.nome }}</td>
-                        <td>{{ cliente.cpf }}</td>
-                        <td>{{ cliente.dataCadastro }}</td>
+                        <td>{{ cliente?.id }}</td>
+                        <td>{{ cliente?.nmUsuario }}</td>
+                        <td>{{ cliente?.nmCompleto }}</td>
+                        <td>{{ cliente?.txEmail }}</td>
+                        <td>{{ cliente?.dtInclusao }}</td>
                         <td>
                             <button class="btn btn-primary" 
                                     routerLink="/clientes/form/{{ cliente.id }}">
@@ -69,7 +69,7 @@
                     <h4>Confirmação</h4>
                 </div>
                 <div class="modal-body" *ngIf="clienteSelecionado">
-                    Confirma a deleção do cadastro do(a) {{ clienteSelecionado.nome }}?
+                    Confirma a deleção do cadastro do(a) {{ clienteSelecionado?.nmUsuario }}?
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success" (click)="deletarCliente()" data-dismiss="modal">Confirmar</button>

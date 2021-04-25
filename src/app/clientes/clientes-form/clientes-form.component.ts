@@ -31,8 +31,14 @@ export class ClientesFormComponent implements OnInit {
       this.service
       .getClienteById( this.id )
       .subscribe(
-        response => this.cliente = response,
-        errorResponse => this.cliente = new Cliente()
+        response => {
+          this.cliente = response,
+          console.log("Cliente OK: " + this.cliente.dtInclusao)
+        },
+        errorResponse => {
+          this.cliente = new Cliente(),
+          console.log("Cliente Não OK: " + errorResponse)
+        }
       )
     }
     

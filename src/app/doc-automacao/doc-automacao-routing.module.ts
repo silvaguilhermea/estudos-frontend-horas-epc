@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from '../layout/layout.component';
-import { AuthGuard } from '../auth.guard';
 import { DocAutomacaoFormComponent } from "./doc-automacao-form/doc-automacao-form.component";
 import { DocAutomacaoListaComponent } from "./doc-automacao-lista/doc-automacao-lista.component";
 
 const routes: Routes = [
-  { path: 'doc-automacao', component: LayoutComponent, canActivate: [AuthGuard], children: [
+  { path: 'doc-automacao', component: LayoutComponent, children: [
 
     { path: 'form', component: DocAutomacaoFormComponent },
     { path: 'form/:id', component: DocAutomacaoFormComponent },

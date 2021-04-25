@@ -38,7 +38,7 @@
                 <tbody>
                     <tr *ngFor="let setor of setores">
                         <td>{{ setor.id }}</td>
-                        <td>{{ setor.nome }}</td>
+                        <td>{{ setor.nmSetor }}</td>
                         <td>
                             <button class="btn btn-primary" 
                                     routerLink="/setores/form/{{ setor.id }}">
@@ -63,7 +63,7 @@
                     <h4>Confirmação</h4>
                 </div>
                 <div class="modal-body" *ngIf="setorSelecionado">
-                    Confirma a deleção do cadastro do setor {{ setorSelecionado.nome }}?
+                    Confirma a deleção do cadastro do setor {{ setorSelecionado.nmSetor }}?
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success" (click)="deletarSetor()" data-dismiss="modal">Confirmar</button>

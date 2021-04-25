@@ -21,6 +21,9 @@ export class SetoresListaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.setorService
+      .getSetores()
+      .subscribe( resposta => {this.setores = resposta, console.log(resposta)} );
   }
 
   novoCadastro(){

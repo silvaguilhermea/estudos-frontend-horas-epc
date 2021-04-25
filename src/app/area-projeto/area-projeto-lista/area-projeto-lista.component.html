@@ -8,9 +8,9 @@
             
             <div class="col-md-6">
                 <label for="inputArea">Pesquisar por área:</label>
-                <select [(ngModel)]="area" class="form-control" name="area">
+                <select [(ngModel)]="area" class="form-control" name="areaSelecionada">
                     <option value="">Selecione...</option>
-                    <option *ngFor="let area of areas" [value]="areaSelecionada">
+                    <option *ngFor="let area of areas" [value]="area">
                         {{ area?.nmArea }}
                     </option>
                 </select>
@@ -40,6 +40,7 @@
             <table class="table table-condensed table-hover">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Área</th>
                         <th>Projeto</th>
                         <th>Data Inicial</th>
@@ -47,18 +48,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of lista">
-                        <td>{{ item.area.nmArea }}</td>
-                        <td>{{ item?.projeto }}</td>
-                        <td>{{ item?.dataInicio }}</td>
-                        <td>{{ item?.dataFimPlanejado }}</td>
+                    <tr *ngFor="let area of lista">
+                        <td>{{ area?.id }}</td>
+                        <td>{{ area?.area }}</td>
+                        <td>{{ area?.nm_projeto }}</td>
+                        <td>{{ area?.dtInicio }}</td>
+                        <td>{{ area?.dtFimPlanejado }}</td>
                         <td>
                             <button class="btn btn-primary" 
-                                    routerLink="/area-projeto/form/{{ item.id }}">
+                                    routerLink="/area-projeto/form/{{ area.id }}">
                                 <i class="fa fa-edit"></i>
                             </button>
                             
-                            <button class="btn btn-danger ml-1" (click)="preparaDelecao(item)"
+                            <button class="btn btn-danger ml-1" (click)="preparaDelecao(area)"
                                     data-toggle="modal" data-target="#modalDelecao">
                                 <i class="fa fa-trash"></i>
                             </button>

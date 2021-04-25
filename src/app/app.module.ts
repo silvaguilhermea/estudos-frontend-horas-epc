@@ -20,8 +20,6 @@ import { AreasService } from './areas.service';
  
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
-import { AuthService } from './auth.service';
-import { TokenInterceptor } from './token.interceptor';
 import { SetoresModule } from './setores/setores.module';
 import { SetoresService } from './setores.service';
 import { DocEngenhariaModule } from './doc-engenharia/doc-engenharia.module';
@@ -35,7 +33,6 @@ import { AreaProjetoService } from './area-projeto.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
     LayoutComponent
   ],
   imports: [
@@ -56,17 +53,11 @@ import { AreaProjetoService } from './area-projeto.service';
   providers: [
     ClientesService,
     ServicoPrestadoService,
-    AuthService,
     AreasService,
     SetoresService,
     DocEngenhariaService,
     DocAutomacaoService,
-    AreaProjetoService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
+    AreaProjetoService
   ],
   bootstrap: [AppComponent]
 })

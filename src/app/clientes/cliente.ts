@@ -1,6 +1,8 @@
 export class Cliente {
     id?: number;
-    nome?: string;
-    cpf?: string;
-    dataCadastro?: string;
+    nmUsuario?: string;
+    nmCompleto?: string;
+    txEmail?: string;
+    txSenha?: string;
+    dtInclusao?: string;
 }

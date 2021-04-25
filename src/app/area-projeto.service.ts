@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { AreaProjeto } from "./area-projeto/area-projeto";
 import { AreaProjetoBusca } from "./area-projeto/area-projeto-lista/areaProjetoBusca";
+import { Area } from './areas/area';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AreaProjetoService {
 
-  apiURL: string = environment.apiURLBase + "/api/area-projeto"
+  apiURL: string = environment.apiURLBase + "/projetos"
 
   constructor( private http: HttpClient ) { }
 
@@ -21,7 +22,7 @@ export class AreaProjetoService {
   buscar( area: string ) : Observable<AreaProjetoBusca[]>{
     const httpParams = new HttpParams().set("area", area);
 
-    // /api/area-projeto?area=P41-PPH
+    // /projeto?area=P41-PPH
     const url = this.apiURL + "?" + httpParams.toString();
     console.log(url);
     return this.http.get<any>(url);
