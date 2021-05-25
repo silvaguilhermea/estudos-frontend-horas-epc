@@ -38,7 +38,7 @@
                 <tbody>
                     <tr *ngFor="let area of areas">
                         <td>{{ area?.id }}</td>
-                        <td>{{ area?.nmArea }}</td>
+                        <td>{{ area?.name }}</td>
                         <td>
                             <button class="btn btn-primary" 
                                     routerLink="/areas/form/{{ area.id }}">
@@ -63,7 +63,7 @@
                     <h4>Confirmação</h4>
                 </div>
                 <div class="modal-body" *ngIf="areaSelecionada">
-                    Confirma a deleção do cadastro da área {{ areaSelecionada?.nmArea }}?
+                    Confirma a deleção do cadastro da área {{ areaSelecionada?.name }}?
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success" (click)="deletarArea()" data-dismiss="modal">Confirmar</button>

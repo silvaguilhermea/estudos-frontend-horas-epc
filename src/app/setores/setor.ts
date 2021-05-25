@@ -1,4 +1,4 @@
 export class Setor {
     id?: number;
-    nmSetor?: string;
+    name?: string;
 }

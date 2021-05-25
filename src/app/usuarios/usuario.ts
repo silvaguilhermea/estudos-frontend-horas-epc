@@ -1,4 +1,4 @@
-export class Area {
+export class Usuario {
     id?: number;
     name?: string;
 }

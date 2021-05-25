@@ -8,26 +8,22 @@ import { AppComponent } from './app.component';
 
 import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component'
-import { ClientesModule } from './clientes/clientes.module';
-import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
-import { ProjetosModule } from './projetos/projetos.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 import { AreasModule } from './areas/areas.module';
 
-import { ClientesService } from './clientes.service';
-import { ClientesListaComponent } from './clientes/clientes-lista/clientes-lista.component';
-import { ServicoPrestadoService } from './servico-prestado.service';
+import { UsuariosService } from './usuarios.service';
 import { AreasService } from './areas.service';
- 
+import { SetoresService } from './setores.service'; 
+import { EstadoService } from './estado.service';
+import { DocAutomacaoService } from './doc-automacao.service';
+import { ProjetosService } from './projetos.service';
+
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SetoresModule } from './setores/setores.module';
-import { SetoresService } from './setores.service';
-import { DocEngenhariaModule } from './doc-engenharia/doc-engenharia.module';
-import { DocEngenhariaService } from './doc-engenharia.service';
+import { EstadoModule } from './estado/estado.module';
 import { DocAutomacaoModule } from './doc-automacao/doc-automacao.module';
-import { DocAutomacaoService } from './doc-automacao.service';
-import { AreaProjetoModule } from './area-projeto/area-projeto.module';
-import { AreaProjetoService } from './area-projeto.service';
+import { ProjetosModule } from './projetos/projetos.module';
 
 @NgModule({
   declarations: [
@@ -41,23 +37,21 @@ import { AreaProjetoService } from './area-projeto.service';
     HttpClientModule,
     AppRoutingModule,
     TemplateModule,
-    ClientesModule,
-    ServicoPrestadoModule,
+    UsuariosModule,
     ProjetosModule,
     AreasModule,
     SetoresModule,
-    DocEngenhariaModule,
+    EstadoModule,
     DocAutomacaoModule,
-    AreaProjetoModule
+    ProjetosModule
   ],
   providers: [
-    ClientesService,
-    ServicoPrestadoService,
+    UsuariosService,
     AreasService,
     SetoresService,
-    DocEngenhariaService,
+    EstadoService,
     DocAutomacaoService,
-    AreaProjetoService
+    ProjetosService
   ],
   bootstrap: [AppComponent]
 })

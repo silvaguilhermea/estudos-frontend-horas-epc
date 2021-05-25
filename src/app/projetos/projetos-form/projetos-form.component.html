@@ -1,75 +1,86 @@
 <h1 class="mt-4">Projetos</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">{{ 'cliente.id' ? 'Edição' : 'Cadastro' }}</li>
+    <li class="breadcrumb-item active">{{ projeto?.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
-    <form #projetoForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #form="ngForm" (submit)="onSubmit()">
 
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success" role="alert" *ngIf="success == true">
-                    Projeto cadastrado/atualizado com sucesso!
+                    Projeto cadastrado com sucesso!
                 </div>
                 <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
                     {{ erro }}
                 </div>
             </div>
         </div>
-
+        
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6" *ngIf="!projeto?.id">
                 <div class="form-group">
-                    <label>Área:</label>
-                    <input type="text" class="form-control" name="area">
+                    <label>Área: </label>
+                    <select class="form-control"
+                            [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="areas">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let area of areas" 
+                                [ngValue]="area">
+                            {{ area?.name }}
+                        </option>
+                    </select>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6" *ngIf="projeto.id">
+                <div class="form-group">
+                    <label>Área: </label>
+                    <input type="text" [(ngModel)]="projeto.area.name" name="id" class="form-control" disabled="true">
+                </div>
+            </div>
+            
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Projeto:</label>
-                    <input type="text" class="form-control" name="projeto">
+                    <input type="text" class="form-control" [(ngModel)]="projeto.name" name="projeto">
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Setor:</label>
-                    <input type="text" class="form-control" name="setor">
-                </div>
-            </div>
+            </div> 
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label>Atividade:</label>
-                    <input type="text" class="form-control" name="atividade">
+                    <label>Data Inicial:</label>
+                    <input class="form-control" 
+                            [(ngModel)]="projeto.id" type="datetime"
+                            name="data-inicio" id="inputDataInicio">
                 </div>
             </div>
-            <div class="col-md-4">
+
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label>Equipamento:</label>
-                    <input type="text" class="form-control" name="equipamento">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Ação:</label>
-                    <input type="text" class="form-control" name="acao">
+                    <label>Data Final (Planejado):</label>
+                    <input class="form-control" 
+                            [(ngModel)]="projeto.id" type="datetime" 
+                            name="data-fim-plan" id="inputDataFinalPlan">
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-3">
-
-                <button type="submit" class="btn btn-success" *ngIf=true>
-                    <i class="fa fa-save"></i> Salvar
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-save"></i>
+                    Salvar
                 </button>
-
-                <button type="submit" class="btn btn-primary" *ngIf=false>
-                    <i class="fa fa-sync-alt"></i> Atualizar
+                <button type="button" 
+                    routerLink="/projetos/lista"
+                    class="btn btn-danger ml-1">
+                    <i class="fa fa-arrow-alt-circle-left"></i>
+                    Voltar
                 </button>
-
             </div>
         </div>
+
     </form>
 </div>
+

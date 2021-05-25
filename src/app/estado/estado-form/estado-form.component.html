@@ -1,9 +1,9 @@
-<h1 class="mt-4">Áreas</h1>
+<h1 class="mt-4">Status das atividades</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">{{ area?.id ? 'Edição' : 'Cadastro' }}</li>
+    <li class="breadcrumb-item active">{{ estado.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
-    <form #areaForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #docEngenhariaForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success" role="alert" *ngIf="success == true">
@@ -16,28 +16,28 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6" *ngIf="area?.id">
+            <div class="col-md-6" *ngIf="estado.id">
                 <div class="form-group">
                     <label>ID:</label>
-                    <input type="text" [(ngModel)]="area.id" name="id" class="form-control" disabled="true">
+                    <input type="text" [(ngModel)]="estado.id" name="id" class="form-control" disabled="true">
                 </div>
             </div>
     
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Área:</label>
-                    <input type="text" class="form-control" [(ngModel)]="area.name" name="area">
+                    <label>Status:</label>
+                    <input type="text" class="form-control" [(ngModel)]="estado.name" name="estado">
                 </div>
             </div>
         </div>
-    
+
         <div class="row">
             <div class="col-md-3">
-                <button type="submit" class="btn btn-success" *ngIf="!area.id">
+                <button type="submit" class="btn btn-success" *ngIf="!estado.id">
                     <i class="fa fa-save"></i> Salvar
                 </button>
     
-                <button type="submit" class="btn btn-primary" *ngIf="area.id">
+                <button type="submit" class="btn btn-primary" *ngIf="estado.id">
                     <i class="fa fa-sync-alt"></i> Atualizar
                 </button>
     
