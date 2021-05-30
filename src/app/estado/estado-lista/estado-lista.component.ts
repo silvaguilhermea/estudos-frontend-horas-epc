@@ -27,7 +27,7 @@ export class EstadoListaComponent implements OnInit {
   }
 
   novoCadastro(){
-    this.router.navigate(['/estado/form']);
+    this.router.navigate(['/estados/form']);
   }
 
   preparaDelecao(estado: Estado){

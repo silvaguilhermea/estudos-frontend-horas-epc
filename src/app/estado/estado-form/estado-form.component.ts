@@ -37,7 +37,7 @@ export class EstadoFormComponent implements OnInit {
   }
 
   voltarParaListagem() {
-    this.router.navigate(['estado/lista']);
+    this.router.navigate(['estados/lista']);
   }
 
   onSubmit(){
