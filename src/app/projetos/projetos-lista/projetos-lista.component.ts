@@ -19,6 +19,7 @@ export class ProjetosListaComponent implements OnInit {
   projetos: Projeto[] = [];
   lista: Projeto[] = [];
   message: string;
+  projetoSelecionado: Projeto;
 
   constructor(
     private router: Router,
@@ -57,8 +58,8 @@ export class ProjetosListaComponent implements OnInit {
       });
   }
 
-  preparaDelecao(){
-
+  preparaDelecao(projeto: Projeto){
+    this.projetoSelecionado = projeto;
   }
 
   deletarProjeto(){

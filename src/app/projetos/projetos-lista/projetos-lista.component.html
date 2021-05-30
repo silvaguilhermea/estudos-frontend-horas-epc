@@ -60,7 +60,7 @@
                                 <i class="fa fa-edit"></i>
                             </button>
                             
-                            <button class="btn btn-danger ml-1" 
+                            <button class="btn btn-danger ml-1"  (click)="preparaDelecao(projeto)"
                                     data-toggle="modal" data-target="#modalDelecao">
                                 <i class="fa fa-trash"></i>
                             </button>
@@ -77,8 +77,8 @@
                 <div class="modal-header">
                     <h4>Confirmação</h4>
                 </div>
-                <div class="modal-body" *ngIf="area">
-                    Confirma a deleção do cadastro do projeto?
+                <div class="modal-body" *ngIf="projetoSelecionado">
+                    Confirma a deleção do cadastro do projeto {{ projetoSelecionado.name }}
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success" (click)="deletarProjeto()" data-dismiss="modal">Confirmar</button>
