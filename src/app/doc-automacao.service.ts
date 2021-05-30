@@ -10,7 +10,7 @@ import { environment } from '../environments/environment'
 })
 export class DocAutomacaoService {
 
-  apiURL: string = environment.apiURLBase + '/api/doc-automacao';
+  apiURL: string = environment.apiURLBase + '/atividades';
 
   constructor( private http: HttpClient ) { }
 

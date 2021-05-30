@@ -1,4 +1,15 @@
+import { Area } from "../areas/area";
+import { Estado } from "../estado/estado";
+import { Usuario } from "../login/usuario";
+import { Projeto } from "../projetos/projeto";
+import { Setor } from "../setores/setor";
+
 export class DocAutomacao {
     id?: number;
-    nome?: string;
+    name?: string;
+    area?: Area;
+    projeto?: Projeto;
+    usuario?: Usuario;
+    setor?: Setor;
+    estado?: Estado;
 }

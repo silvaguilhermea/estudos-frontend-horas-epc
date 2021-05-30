@@ -1,4 +1,4 @@
-<h1 class="mt-4">Documentos de Automação</h1>
+<h1 class="mt-4">Atividades</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Consulta</li>
 </ol>
@@ -31,14 +31,23 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Documento</th>
-                        <th></th>
+                        <th>Área</th>
+                        <th>Projeto</th>
+                        <th>Setor</th>
+                        <th>Atividade</th>
+                        <th>Responsável</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let docAutomacao of docsAutomacao">
-                        <td>{{ docAutomacao.id }}</td>
-                        <td>{{ docAutomacao.nome }}</td>
+                        <td>{{ docAutomacao?.id }}</td>
+                        <td>{{ docAutomacao?.projeto?.area?.name }}</td>
+                        <td>{{ docAutomacao.projeto?.name }}</td>
+                        <td>{{ docAutomacao.setor?.name }}</td>
+                        <td>{{ docAutomacao?.name }}</td>
+                        <td>{{ docAutomacao.usuario?.name }}</td>
+                        <td>{{ docAutomacao.estado?.name }}</td>
                         <td>
                             <button class="btn btn-primary" 
                                     routerLink="/doc-automacao/form/{{ docAutomacao.id }}">
@@ -63,7 +72,7 @@
                     <h4>Confirmação</h4>
                 </div>
                 <div class="modal-body" *ngIf="docAutomacaoSelecionado">
-                    Confirma a deleção do cadastro do documento {{ docAutomacaoSelecionado.nome }}?
+                    Confirma a deleção do cadastro da atividade {{ docAutomacaoSelecionado.name }}?
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success" (click)="deletarDocAutomacao()" data-dismiss="modal">Confirmar</button>
