@@ -28,6 +28,9 @@ export class DocAutomacaoFormComponent implements OnInit {
   area?: Area;
   areas?: Area[] = [];
   projeto?: Projeto;
+  nomeProjeto?: String;
+  nomeArea?: String;
+  nomeSetor?: String;
   projetosFiltrados?: Projeto[] = [];
   projetos?: Projeto[] = [];
   setores?: Setor[]= [];
@@ -54,7 +57,12 @@ export class DocAutomacaoFormComponent implements OnInit {
       this.service
       .getDocAutomacaoById( this.id )
       .subscribe(
-        response => this.docAutomacao = response,
+        response => { 
+          this.docAutomacao = response,
+          this.nomeArea = this.docAutomacao.projeto?.area?.name, 
+          this.nomeProjeto = this.docAutomacao.projeto?.name,
+          this.nomeSetor = this.docAutomacao.setor?.name;
+        },
         errorResponse => this.docAutomacao = new DocAutomacao()
       )
     } else {

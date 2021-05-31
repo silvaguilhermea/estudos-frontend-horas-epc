@@ -16,6 +16,7 @@ export class ProjetosFormComponent implements OnInit {
   projeto: Projeto;
   success: boolean = false;
   errors: String[];
+  nomeArea?: String;
   id: number;
 
   constructor(
@@ -39,7 +40,8 @@ export class ProjetosFormComponent implements OnInit {
       .getProjetoById( this.id )
       .subscribe(
         response => {
-          this.projeto = response
+          this.projeto = response,
+          this.nomeArea = this.projeto.area?.name;
         },
         errorResponse => this.projeto = new Projeto()
       )

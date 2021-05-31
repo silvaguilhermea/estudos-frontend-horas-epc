@@ -33,7 +33,7 @@
             <div class="col-md-4" *ngIf="docAutomacao?.id">
                 <div class="form-group">
                     <label>Área: </label>
-                    <input type="text" [(ngModel)]="docAutomacao.area" name="id" class="form-control" disabled="true">
+                    <input type="text" [(ngModel)]="this.nomeArea" name="area" class="form-control" disabled="true">
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
             <div class="col-md-4" *ngIf="docAutomacao?.id">
                 <div class="form-group">
                     <label>Projeto: </label>
-                    <input type="text" [(ngModel)]="docAutomacao.projeto" name="id" class="form-control" disabled="true">
+                    <input type="text" [(ngModel)]="this.nomeProjeto" name="projeto" class="form-control" disabled="true">
                 </div>
             </div>
             
@@ -84,7 +84,7 @@
             <div class="col-md-4" *ngIf="docAutomacao?.id">
                 <div class="form-group">
                     <label>Setor: </label>
-                    <input type="text" [(ngModel)]="docAutomacao.setor" name="id" class="form-control" disabled="true">
+                    <input type="text" [(ngModel)]="this.nomeSetor" name="setor" class="form-control" disabled="true">
                 </div>
             </div>
 
@@ -105,7 +105,7 @@
             <div class="col-md-4" *ngIf="docAutomacao?.id">
                 <div class="form-group">
                     <label>Responsável: </label>
-                    <input type="text" [(ngModel)]="docAutomacao.usuario" name="id" class="form-control" disabled="true">
+                    <input type="text" [(ngModel)]="docAutomacao.usuario.name" name="responsavel" class="form-control" disabled="true">
                 </div>
             </div>
 
@@ -126,7 +126,7 @@
             <div class="col-md-4" *ngIf="docAutomacao?.id">
                 <div class="form-group">
                     <label>Status: </label>
-                    <input type="text" [(ngModel)]="docAutomacao.estado" name="id" class="form-control" disabled="true">
+                    <input type="text" [(ngModel)]="docAutomacao.estado.name" name="status" class="form-control" disabled="true">
                 </div>
             </div>
             
