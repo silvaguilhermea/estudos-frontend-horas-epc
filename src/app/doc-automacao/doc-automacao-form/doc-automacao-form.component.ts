@@ -98,15 +98,6 @@ export class DocAutomacaoFormComponent implements OnInit {
   }
 
   listaProjetos(){
-    /*let proj = this.projetos;
-    if (proj && this.area) {
-      proj.forEach(function (value){
-        //value = value.area? == this.area ? value : null;
-        value = value.filter(value.area? == this.area);
-        console.log(value);
-      });
-      
-    }*/
     let projs = this.projetos?.filter((_proj) => {
       return _proj.area?.id === this.area?.id;
     })

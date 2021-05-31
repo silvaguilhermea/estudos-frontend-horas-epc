@@ -1,1 +1,97 @@
-<p>apontamento-form works!</p>
+<h1 class="mt-4">Apontamentos</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">{{ apontamento.id ? 'Edição' : 'Cadastro' }}</li>
+</ol>
+<div class="container">
+    <form #apontamentosForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                    Cadastro salvo/atualizado com sucesso!
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                    {{ erro }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4" *ngIf="!apontamento?.id">
+                <div class="form-group">
+                    <label>Área: </label>
+                    <select class="form-control"
+                            [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="area">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let area of areas"
+                                [ngValue]="area">
+                            {{ area?.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-4" *ngIf="!apontamento?.id">
+                <div class="form-group">
+                    <label>Projeto: </label>
+                    <select class="form-control" (click)="listaProjetos()"
+                            [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="projeto">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let projeto of projetosFiltrados" 
+                                [ngValue]="projeto">
+                            {{ area?.name == projeto.area?.name ? projeto?.name : '' }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="!apontamento?.id">
+                <div class="form-group">
+                    <label>Setor: </label>
+                    <select class="form-control"
+                            [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="setores">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let setor of setores" 
+                                [ngValue]="setor">
+                            {{ setor?.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4" *ngIf="!apontamento?.id">
+                <div class="form-group">
+                    <label>Atividade: </label>
+                    <select class="form-control" (click)="listaAtividades()"
+                            [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="atividade">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let atividade of atividadesFiltradas" 
+                                [ngValue]="atividade">
+                            {{ projeto?.name == atividade.projeto?.name ? atividade?.name : '' }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success" *ngIf="!apontamento.id">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+    
+                <button type="submit" class="btn btn-primary" *ngIf="apontamento.id">
+                    <i class="fa fa-sync-alt"></i> Atualizar
+                </button>
+    
+                <button type="button" class="btn btn-danger ml-1" (click)="voltarParaListagem()">
+                    <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
