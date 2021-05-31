@@ -25,8 +25,10 @@ export class DocAutomacaoFormComponent implements OnInit {
   success: boolean = false;
   errors: String[];
   id: number;
-  area: Area;
+  area?: Area;
   areas?: Area[] = [];
+  projeto?: Projeto;
+  projetosFiltrados?: Projeto[] = [];
   projetos?: Projeto[] = [];
   setores?: Setor[]= [];
   usuarios?: Usuario[] = [];
@@ -79,6 +81,22 @@ export class DocAutomacaoFormComponent implements OnInit {
 
   voltarParaListagem() {
     this.router.navigate(['doc-automacao/lista']);
+  }
+
+  listaProjetos(){
+    /*let proj = this.projetos;
+    if (proj && this.area) {
+      proj.forEach(function (value){
+        //value = value.area? == this.area ? value : null;
+        value = value.filter(value.area? == this.area);
+        console.log(value);
+      });
+      
+    }*/
+    let projs = this.projetos?.filter((_proj) => {
+      return _proj.area?.id === this.area?.id;
+    })
+    this.projetosFiltrados = projs;
   }
 
   onSubmit(){

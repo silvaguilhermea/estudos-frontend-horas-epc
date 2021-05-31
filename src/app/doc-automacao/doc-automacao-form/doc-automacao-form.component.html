@@ -40,11 +40,11 @@
             <div class="col-md-4" *ngIf="!docAutomacao?.id">
                 <div class="form-group">
                     <label>Projeto: </label>
-                    <select class="form-control"
+                    <select class="form-control" (click)="listaProjetos()"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="projetos">
+                            [(ngModel)]="projeto">
                         <option value="">Selecione...</option>
-                        <option *ngFor="let projeto of projetos" 
+                        <option *ngFor="let projeto of projetosFiltrados" 
                                 [ngValue]="projeto">
                             {{ area?.name == projeto.area?.name ? projeto?.name : '' }}
                         </option>
