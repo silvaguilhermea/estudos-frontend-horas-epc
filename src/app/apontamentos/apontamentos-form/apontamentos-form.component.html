@@ -48,9 +48,9 @@
             <div class="col-md-4" *ngIf="!apontamento?.id">
                 <div class="form-group">
                     <label>Setor: </label>
-                    <select class="form-control"
+                    <select class="form-control" (click)="listaAtividades()"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="setores">
+                            [(ngModel)]="setor">
                         <option value="">Selecione...</option>
                         <option *ngFor="let setor of setores" 
                                 [ngValue]="setor">

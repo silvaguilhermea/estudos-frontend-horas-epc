@@ -87,7 +87,7 @@ export class ApontamentosFormComponent implements OnInit {
 
   listaAtividades(){
     let atvs = this.docsAutomacao?.filter((_atv) => {
-      return _atv.projeto?.id === this.projeto?.id;
+      return _atv.projeto?.id === this.projeto?.id && _atv.setor?.id === this.setor?.id;
     })
     this.atividadesFiltradas = atvs;
   }
