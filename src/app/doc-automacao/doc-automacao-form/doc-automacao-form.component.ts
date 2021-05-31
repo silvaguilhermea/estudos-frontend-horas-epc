@@ -64,7 +64,13 @@ export class DocAutomacaoFormComponent implements OnInit {
           this.nomeSetor = this.docAutomacao.setor?.name;
         },
         errorResponse => this.docAutomacao = new DocAutomacao()
-      )
+      );
+      this.serviceEstados
+        .getEstados()
+        .subscribe( resposta => { this.estados = resposta } );
+        this.serviceUsuarios
+        .getUsuarios()
+        .subscribe( resposta => { this.usuarios = resposta } );
     } else {
       this.service
         .getDocsAutomacao()

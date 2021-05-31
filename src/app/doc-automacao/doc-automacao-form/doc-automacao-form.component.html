@@ -106,6 +106,16 @@
                 <div class="form-group">
                     <label>Responsável: </label>
                     <input type="text" [(ngModel)]="docAutomacao.usuario.name" name="responsavel" class="form-control" disabled="true">
+                
+                    <select class="form-control"
+                            [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="usuario">
+                        <option selected [value]="">Selecione...</option>
+                        <option *ngFor="let usuario of usuarios" 
+                                [ngValue]="usuario">
+                            {{ usuario?.name }}
+                        </option>
+                    </select>
                 </div>
             </div>
 
@@ -114,7 +124,7 @@
                     <label>Status: </label>
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="estados">
+                            [(ngModel)]="estado">
                         <option value="">Selecione...</option>
                         <option *ngFor="let estado of estados" 
                                 [ngValue]="estado">
@@ -127,6 +137,16 @@
                 <div class="form-group">
                     <label>Status: </label>
                     <input type="text" [(ngModel)]="docAutomacao.estado.name" name="status" class="form-control" disabled="true">
+
+                    <select class="form-control"
+                            [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="estado">
+                        <option selected [value]="">Selecione...</option>
+                        <option *ngFor="let estado of estados" 
+                                [ngValue]="estado">
+                            {{ estado?.name }}
+                        </option>
+                    </select>
                 </div>
             </div>
             
