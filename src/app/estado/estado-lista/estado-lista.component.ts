@@ -17,11 +17,11 @@ export class EstadoListaComponent implements OnInit {
   
   constructor(
     private router: Router,
-    private estadoService: EstadoService
+    private service: EstadoService
   ) { }
 
   ngOnInit(): void {
-    this.estadoService
+    this.service
       .getEstados()
       .subscribe( resposta => {this.estados = resposta, console.log(resposta)} );
   }
@@ -35,7 +35,19 @@ export class EstadoListaComponent implements OnInit {
   }
 
   deletarEstado(){
-
+    this.service
+    .deletar( this.estadoSelecionado )
+    .subscribe(
+      response => {
+        this.mensagemSucesso = 'Status deletado com sucesso!';
+        this.mensagemErro = '';
+        this.ngOnInit();
+      },
+      erro => {
+        this.mensagemErro = 'Ocorreu um erro ao deletar o status.';
+        this.mensagemSucesso = '';
+      }
+    )
   }
 
 }

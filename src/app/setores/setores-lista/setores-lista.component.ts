@@ -17,11 +17,11 @@ export class SetoresListaComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private setorService: SetoresService
+    private service: SetoresService
   ) { }
 
   ngOnInit(): void {
-    this.setorService
+    this.service
       .getSetores()
       .subscribe( resposta => {this.setores = resposta, console.log(resposta)} );
   }
@@ -35,6 +35,18 @@ export class SetoresListaComponent implements OnInit {
   }
 
   deletarSetor(){
-
+    this.service
+    .deletar( this.setorSelecionado )
+    .subscribe(
+      response => {
+        this.mensagemSucesso = 'Setor deletado com sucesso!';
+        this.mensagemErro = '';
+        this.ngOnInit();
+      },
+      erro => {
+        this.mensagemErro = 'Ocorreu um erro ao deletar o setor.';
+        this.mensagemSucesso = '';
+      }
+    )
   }
 }

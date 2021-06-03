@@ -11,7 +11,7 @@ import { Setor } from '../setor';
 export class SetoresFormComponent implements OnInit {
 
   setor: Setor;
-  success: boolean = false;
+  success: boolean;
   errors: String[];
   id: number;
 
@@ -54,14 +54,13 @@ export class SetoresFormComponent implements OnInit {
       })
 
     } else {
-
-      this.service.salvar(this.setor)
+      this.service
+      .salvar(this.setor)
       .subscribe( response => {
         this.success = true;
         this.errors = [];
         this.setor = response;
-        console.log(response);
-      } , errorResponse => {
+      }, errorResponse => {
         this.success = false;
         this.errors = errorResponse.error.errors;
       })

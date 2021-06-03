@@ -20,7 +20,7 @@ export class EstadoService {
  
   atualizar( estado: Estado ) : Observable<any> {
     return this.http.put<Estado>(`${this.apiURL}/${estado.id}`, estado);
- }
+  }
  
   getEstados() : Observable<Estado[]> {
     return this.http.get<Estado[]>( this.apiURL );

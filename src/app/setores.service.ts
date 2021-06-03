@@ -15,7 +15,7 @@ export class SetoresService {
   constructor( private http: HttpClient ) { }
   
   salvar( setor: Setor ) : Observable<Setor> {
-    return this.http.post<Setor>( `${this.apiURL}` , setor );
+    return this.http.post<Setor>( `${this.apiURL}`, setor );
   }
    
   atualizar( setor: Setor ) : Observable<any> {
