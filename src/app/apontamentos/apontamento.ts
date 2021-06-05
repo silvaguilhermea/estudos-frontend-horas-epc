@@ -5,4 +5,6 @@ export class Apontamento {
     setor?: string;
     atividade?: string;
     responsavel?: string;
+    dataInicial?: string;
+    dataFinal?: string;
 }

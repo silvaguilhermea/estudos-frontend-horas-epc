@@ -65,7 +65,7 @@ export class ProjetosFormComponent implements OnInit {
       })
 
     } else {
-      console.log(this.projeto);
+      console.log("Projeto: ", this.projeto);
       this.service.salvar(this.projeto)
       .subscribe( response => {
         this.success = true;

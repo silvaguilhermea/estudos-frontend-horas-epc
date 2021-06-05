@@ -125,6 +125,26 @@
         </div>
 
         <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Início:</label>
+                    <input class="form-control" 
+                            type="datetime-local" [(ngModel)]="apontamento.dataInicial"
+                            name="data-inicio" id="inputDataInicio">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Fim:</label>
+                    <input class="form-control" 
+                            type="datetime-local" [(ngModel)]="apontamento.dataFinal"
+                            name="data-fim" id="inputDataFim">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-3">
                 <button type="submit" class="btn btn-success" *ngIf="!apontamento.id">
                     <i class="fa fa-save"></i> Salvar

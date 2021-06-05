@@ -58,6 +58,8 @@
                         <th>Setor</th>
                         <th>Atividade</th>
                         <th>Usuário(a)</th>
+                        <th>Início</th>
+                        <th>Fim</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -69,6 +71,8 @@
                         <td>{{ apontamento.setor }}</td>
                         <td>{{ apontamento.atividade }}</td>
                         <td>{{ apontamento.responsavel }}</td>
+                        <td>{{ apontamento.dataInicial }}</td>
+                        <td>{{ apontamento.dataFinal }}</td>
                         <td>
                             <button class="btn btn-primary" 
                                     routerLink="/apontamentos/form/{{ apontamento.id }}">
