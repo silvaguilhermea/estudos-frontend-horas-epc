@@ -41,7 +41,7 @@ export class AreasFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.area)
+    
     if( this.id ) {
 
       this.service
@@ -61,7 +61,6 @@ export class AreasFormComponent implements OnInit {
         this.success = true;
         this.errors = [];
         this.area = response;
-        console.log(response);
       } , errorResponse => {
         this.success = false;
         this.errors = errorResponse.error.errors;

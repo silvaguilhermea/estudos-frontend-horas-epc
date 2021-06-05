@@ -36,7 +36,7 @@ export class ProjetosService {
   }
 
   atualizar( projeto: Projeto ) : Observable<any> {
-    return this.http.put<Projeto>(`${this.apiURL}/${projeto.id}`, Projeto);
+    return this.http.put<Projeto>(`${this.apiURL}/${projeto.id}`, projeto);
   }
 
   deletar( projeto: Projeto ) : Observable<any> {

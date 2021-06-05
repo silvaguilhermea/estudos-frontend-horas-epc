@@ -1,9 +1,9 @@
 <h1 class="mt-4">Status das atividades</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">{{ estado.id ? 'Edição' : 'Cadastro' }}</li>
+    <li class="breadcrumb-item active">{{ estado?.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
-    <form #docEngenhariaForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #estadosForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success" role="alert" *ngIf="success == true">

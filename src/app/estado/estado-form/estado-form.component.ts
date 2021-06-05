@@ -54,13 +54,14 @@ export class EstadoFormComponent implements OnInit {
       })
 
     } else {
-
+      console.log(this.estado);
       this.service.salvar(this.estado)
       .subscribe( response => {
         this.success = true;
         this.errors = [];
         this.estado = response;
-        console.log(response);
+        console.log(this.success);
+        console.log("Resposta: ", response);
       } , errorResponse => {
         this.success = false;
         this.errors = errorResponse.error.errors;
