@@ -16,23 +16,6 @@
             </div>
         </div>
 
-        <div class="row" *ngIf="usuario.id">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>ID:</label>
-                    <input type="text" [ngModel]="usuario.id" name="id" class="form-control" disabled="true">
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Data cadastro:</label>
-                    <input type="text" class="form-control" 
-                    name="dataCadastro" 
-                    disabled="true">
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-6">
                 
@@ -44,7 +27,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>E-mail:</label>
-                    <input type="text" class="form-control" name="txEmail">
+                    <input type="text" class="form-control" [(ngModel)]="usuario.email" name="txEmail">
                 </div>
             </div>
         </div>
@@ -52,13 +35,13 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Usuário:</label>
-                    <input type="text" class="form-control" name="nmUsuario">
+                    <input type="text" class="form-control" [(ngModel)]="usuario.user" name="nmUsuario">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Senha:</label>
-                    <input type="password" class="form-control" name="txSenha">
+                    <input type="password" class="form-control" [(ngModel)]="usuario.password" name="txSenha">
                 </div>
             </div>
         </div>

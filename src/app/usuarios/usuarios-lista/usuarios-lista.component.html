@@ -34,17 +34,15 @@
                         <th>Usuário</th>
                         <th>Nome</th>
                         <th>E-mail</th>
-                        <th>Data Cadastro</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let usuario of usuarios">
                         <td>{{ usuario?.id }}</td>
-                        <td></td>
+                        <td>{{ usuario?.user }}</td>
                         <td>{{ usuario?.name }}</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ usuario?.email }}</td>
                         <td>
                             <button class="btn btn-primary" 
                                     routerLink="/usuarios/form/{{ usuario.id }}">
