@@ -1,6 +1,6 @@
 <h1 class="mt-4">Apontamentos</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">{{ apontamento.id ? 'Edição' : 'Cadastro' }}</li>
+    <li class="breadcrumb-item active">{{ apontamento?.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
     <form #apontamentosForm="ngForm" (ngSubmit)="onSubmit()">
@@ -30,6 +30,12 @@
                     </select>
                 </div>
             </div>
+            <div class="col-md-4" *ngIf="apontamento?.id">
+                <div class="form-group">
+                    <label>Área: </label>
+                    <input type="text" [(ngModel)]="this.apontamento.area" name="area" class="form-control" disabled="true">
+                </div>
+            </div>
 
             <div class="col-md-4" *ngIf="!apontamento?.id">
                 <div class="form-group">
@@ -45,6 +51,13 @@
                     </select>
                 </div>
             </div>
+            <div class="col-md-4" *ngIf="apontamento?.id">
+                <div class="form-group">
+                    <label>Projeto: </label>
+                    <input type="text" [(ngModel)]="this.apontamento.projeto" name="projeto" class="form-control" disabled="true">
+                </div>
+            </div>
+
             <div class="col-md-4" *ngIf="!apontamento?.id">
                 <div class="form-group">
                     <label>Setor: </label>
@@ -57,6 +70,12 @@
                             {{ setor?.name }}
                         </option>
                     </select>
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="apontamento?.id">
+                <div class="form-group">
+                    <label>Setor: </label>
+                    <input type="text" [(ngModel)]="this.apontamento.setor" name="setor" class="form-control" disabled="true">
                 </div>
             </div>
         </div>
@@ -74,6 +93,33 @@
                             {{ projeto?.name == atividade.projeto?.name ? atividade?.name : '' }}
                         </option>
                     </select>
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="apontamento?.id">
+                <div class="form-group">
+                    <label>Atividade: </label>
+                    <input type="text" [(ngModel)]="this.apontamento.atividade" name="atividade" class="form-control" disabled="true">
+                </div>
+            </div>
+
+            <div class="col-md-4" *ngIf="!apontamento?.id">
+                <div class="form-group">
+                    <label>Usuário(a): </label>
+                    <select class="form-control"
+                            [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="usuario">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let usuario of usuarios" 
+                                [ngValue]="usuario">
+                            {{ usuario?.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="apontamento?.id">
+                <div class="form-group">
+                    <label>Usuário(a): </label>
+                    <input type="text" [(ngModel)]="this.apontamento.responsavel" name="responsavel" class="form-control" disabled="true">
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { DocAutomacao } from "./doc-automacao/doc-automacao";
 import { Observable } from 'rxjs';
@@ -16,6 +16,15 @@ export class DocAutomacaoService {
 
   salvar( docAutomacao: DocAutomacao ) : Observable<DocAutomacao> {
     return this.http.post<DocAutomacao>( `${this.apiURL}` , docAutomacao );
+  }
+
+  buscar( projeto: string ) : Observable<[]>{
+    const httpParams = new HttpParams().set("projeto", projeto);
+
+    // /atividades?projeto=CIP Clarificação
+    const url = this.apiURL + "?" + httpParams.toString();
+    console.log(url);
+    return this.http.get<any>(url);
   }
  
   atualizar( docAutomacao: DocAutomacao ) : Observable<any> {

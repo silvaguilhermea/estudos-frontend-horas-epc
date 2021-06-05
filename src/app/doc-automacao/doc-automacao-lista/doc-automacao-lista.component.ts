@@ -16,9 +16,13 @@ export class DocAutomacaoListaComponent implements OnInit {
 
   mensagemSucesso: string;
   mensagemErro: string;
+  message: string;
   docsAutomacao: DocAutomacao[] = [];
+  lista: DocAutomacao[] = [];
   areas: Area[] = [];
+  projeto: string;
   projetos: Projeto[] = [];
+  projetoSelecionado: Projeto;
   docAutomacaoSelecionado: DocAutomacao;
 
   constructor(
@@ -44,12 +48,40 @@ export class DocAutomacaoListaComponent implements OnInit {
     this.router.navigate(['/doc-automacao/form']);
   }
 
+  consultar() {
+    if ( this.projetoSelecionado.name ) {
+      this.projeto = this.projetoSelecionado.name;
+    }
+    this.service
+      .buscar( this.projeto )
+      .subscribe( response => {
+        this.lista = response;
+        if( this.lista.length <= 0 ){
+          this.message = "Nenhum registro encontrado.";
+        } else {
+          this.message = 'Registro(s) encontrado(s)';
+        }
+      });
+  }
+
   preparaDelecao(docAutomacao: DocAutomacao){
     this.docAutomacaoSelecionado = docAutomacao;
   }
 
   deletarDocAutomacao(){
-
+    this.service
+    .deletar( this.docAutomacaoSelecionado )
+    .subscribe(
+      response => {
+        this.mensagemSucesso = 'Atividade deletada com sucesso!',
+        this.mensagemErro = '';
+        this.consultar();
+      },
+      erro => {
+        this.mensagemErro = 'Ocorreu um erro ao deletar a atividade.',
+        this.mensagemSucesso = '';
+      }
+    )
   }
 
 }

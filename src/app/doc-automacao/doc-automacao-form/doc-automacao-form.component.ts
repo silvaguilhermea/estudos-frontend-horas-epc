@@ -114,7 +114,7 @@ export class DocAutomacaoFormComponent implements OnInit {
         this.errors = [];
       }, errorResponse => {
         this.success = false;
-        this.errors = ['Erro ao atualizar o documento.']
+        this.errors = ['Erro ao atualizar a atividade.']
       })
 
     } else {
@@ -124,6 +124,7 @@ export class DocAutomacaoFormComponent implements OnInit {
         this.success = true;
         this.errors = [];
         this.docAutomacao = response;
+        console.log(this.docAutomacao);
         console.log(response);
       } , errorResponse => {
         this.success = false;

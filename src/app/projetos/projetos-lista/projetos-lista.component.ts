@@ -71,12 +71,12 @@ export class ProjetosListaComponent implements OnInit {
     .deletar( this.projetoSelecionado )
     .subscribe(
       response => {
-        this.mensagemSucesso = 'Área deletada com sucesso!',
+        this.mensagemSucesso = 'Projeto deletado com sucesso!',
         this.mensagemErro = '';
         this.consultar();
       },
       erro => {
-        this.mensagemErro = 'Ocorreu um erro ao deletar a área.',
+        this.mensagemErro = 'Ocorreu um erro ao deletar o projeto.',
         this.mensagemSucesso = '';
       }
     )

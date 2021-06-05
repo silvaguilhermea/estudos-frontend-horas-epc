@@ -1,6 +1,6 @@
 <h1 class="mt-4">Atividades</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">{{ docAutomacao.id ? 'Edição' : 'Cadastro' }}</li>
+    <li class="breadcrumb-item active">{{ docAutomacao?.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
     <form #docAutomacaoForm="ngForm" (ngSubmit)="onSubmit()">
@@ -42,7 +42,7 @@
                     <label>Projeto: </label>
                     <select class="form-control" (click)="listaProjetos()"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="projeto">
+                            [(ngModel)]="docAutomacao.projeto">
                         <option value="">Selecione...</option>
                         <option *ngFor="let projeto of projetosFiltrados" 
                                 [ngValue]="projeto">
@@ -72,7 +72,7 @@
                     <label>Setor: </label>
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="setores">
+                            [(ngModel)]="docAutomacao.setor">
                         <option value="">Selecione...</option>
                         <option *ngFor="let setor of setores" 
                                 [ngValue]="setor">
@@ -93,7 +93,7 @@
                     <label>Responsável: </label>
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="usuarios">
+                            [(ngModel)]="docAutomacao.usuario">
                         <option value="">Selecione...</option>
                         <option *ngFor="let usuario of usuarios" 
                                 [ngValue]="usuario">
@@ -109,7 +109,7 @@
                 
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="usuario">
+                            [(ngModel)]="docAutomacao.usuario">
                         <option selected [value]="">Selecione...</option>
                         <option *ngFor="let usuario of usuarios" 
                                 [ngValue]="usuario">
@@ -124,7 +124,7 @@
                     <label>Status: </label>
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="estado">
+                            [(ngModel)]="docAutomacao.estado">
                         <option value="">Selecione...</option>
                         <option *ngFor="let estado of estados" 
                                 [ngValue]="estado">
@@ -140,7 +140,7 @@
 
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="estado">
+                            [(ngModel)]="docAutomacao.estado">
                         <option selected [value]="">Selecione...</option>
                         <option *ngFor="let estado of estados" 
                                 [ngValue]="estado">

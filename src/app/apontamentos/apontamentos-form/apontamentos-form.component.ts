@@ -5,10 +5,12 @@ import { AreasService } from 'src/app/areas.service';
 import { Area } from 'src/app/areas/area';
 import { DocAutomacaoService } from 'src/app/doc-automacao.service';
 import { DocAutomacao } from 'src/app/doc-automacao/doc-automacao';
+import { Usuario } from 'src/app/usuarios/usuario';
 import { ProjetosService } from 'src/app/projetos.service';
 import { Projeto } from 'src/app/projetos/projeto';
 import { SetoresService } from 'src/app/setores.service';
 import { Setor } from 'src/app/setores/setor';
+import { UsuariosService } from 'src/app/usuarios.service';
 import { Apontamento } from '../apontamento';
 
 @Component({
@@ -25,27 +27,28 @@ export class ApontamentosFormComponent implements OnInit {
 
   area?: Area;
   areas?: Area[] = [];
-  nomeArea?: String;
 
   projeto?: Projeto;
   projetos?: Projeto[] = [];
   projetosFiltrados?: Projeto[] = [];
-  nomeProjeto?: String;
 
   setores?: Setor[]= [];
   setor?: Setor;
-  nomeSetor?: string;
 
   atividade: DocAutomacao;
   docsAutomacao?: DocAutomacao[] = [];
   atividadesFiltradas?: DocAutomacao[] = [];
-  nomeDocumento?: string;
+
+  usuario?: Usuario;
+  usuarios?: Usuario[] = [];
+  nomeUsuario?: string;
 
   constructor(
     private serviceAreas: AreasService,
     private serviceProjetos: ProjetosService,
     private serviceSetores: SetoresService,
     private serviceAtividades: DocAutomacaoService,
+    private serviceUsuarios: UsuariosService,
     private service: ApontamentosService,
     private router: Router,
     private activatedRoute: ActivatedRoute
@@ -57,6 +60,12 @@ export class ApontamentosFormComponent implements OnInit {
     let params : Params = this.activatedRoute.params
     if(params && params.value && params.value.id){
       this.id = params.value.id;
+      this.service
+      .getApontamentoById( this.id )
+      .subscribe(
+        response => {this.apontamento = response, console.log("Apontamento: ", this.apontamento)},
+        errorResponse => this.apontamento = new Apontamento()
+      )
       
     } else {
       this.serviceAreas
@@ -70,7 +79,10 @@ export class ApontamentosFormComponent implements OnInit {
         .subscribe( resposta => { this.setores = resposta } );
       this.serviceAtividades
         .getDocsAutomacao()
-        .subscribe( resposta => { this.docsAutomacao = resposta } );  
+        .subscribe( resposta => { this.docsAutomacao = resposta } ); 
+      this.serviceUsuarios
+        .getUsuarios()
+        .subscribe( resposta => { this.usuarios = resposta } ); 
     }
   }
 
@@ -106,16 +118,25 @@ export class ApontamentosFormComponent implements OnInit {
       })
 
     } else {
-
+      if (this.area && this.projeto?.name && this.setor?.name && this.atividade.name) {
+        this.apontamento.area = this.area.name;
+        this.apontamento.projeto = this.projeto?.name;
+        this.apontamento.setor = this.setor?.name;
+        this.apontamento.atividade = this.atividade.name;
+        this.apontamento.responsavel = this.usuario?.name;
+      }
+      
       this.service.salvar(this.apontamento)
       .subscribe( response => {
         this.success = true;
         this.errors = [];
         this.apontamento = response;
-        console.log(response);
+        console.log("Apontamento: ", this.apontamento);
+        console.log("Resposta: ", response);
       } , errorResponse => {
         this.success = false;
         this.errors = errorResponse.error.errors;
+        console.log(this.apontamento);
       })
 
     }

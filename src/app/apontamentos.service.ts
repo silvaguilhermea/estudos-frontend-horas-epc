@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment'
@@ -17,6 +17,15 @@ export class ApontamentosService {
 
   salvar( apontamento: Apontamento ) : Observable<Apontamento> {
     return this.http.post<Apontamento>( `${this.apiURL}` , apontamento );
+  }
+
+  buscar( usuario: string ) : Observable<[]>{
+    const httpParams = new HttpParams().set("responsavel", usuario);
+
+    // /apontamentos?responsavel=Guilherme
+    const url = this.apiURL + "?" + httpParams.toString();
+    console.log(url);
+    return this.http.get<any>(url);
   }
  
   atualizar( apontamento: Apontamento ) : Observable<any> {
