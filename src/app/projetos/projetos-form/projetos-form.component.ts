@@ -54,7 +54,7 @@ export class ProjetosFormComponent implements OnInit {
 
   onSubmit(){
     if( this.id ) {
-
+      console.log(this.projeto);
       this.service
       .atualizar( this.projeto )
       .subscribe( response => {
@@ -66,7 +66,7 @@ export class ProjetosFormComponent implements OnInit {
       })
 
     } else {
-
+      console.log(this.projeto);
       this.service.salvar(this.projeto)
       .subscribe( response => {
         this.success = true;

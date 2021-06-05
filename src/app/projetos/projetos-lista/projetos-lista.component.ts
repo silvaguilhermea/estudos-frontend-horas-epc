@@ -19,6 +19,8 @@ export class ProjetosListaComponent implements OnInit {
   projetos: Projeto[] = [];
   lista: Projeto[] = [];
   message: string;
+  mensagemSucesso: string;
+  mensagemErro: string;
   projetoSelecionado: Projeto;
 
   constructor(
@@ -45,7 +47,9 @@ export class ProjetosListaComponent implements OnInit {
   }
 
   consultar() {
-    console.log(this.area);
+    if ( this.areaSelecionada.name ) {
+      this.area = this.areaSelecionada.name;
+    }
     this.service
       .buscar( this.area )
       .subscribe( response => {
@@ -63,6 +67,19 @@ export class ProjetosListaComponent implements OnInit {
   }
 
   deletarProjeto(){
+    this.service
+    .deletar( this.projetoSelecionado )
+    .subscribe(
+      response => {
+        this.mensagemSucesso = 'Área deletada com sucesso!',
+        this.mensagemErro = '';
+        this.consultar();
+      },
+      erro => {
+        this.mensagemErro = 'Ocorreu um erro ao deletar a área.',
+        this.mensagemSucesso = '';
+      }
+    )
     
   }
 

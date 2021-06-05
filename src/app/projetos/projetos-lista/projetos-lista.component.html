@@ -3,13 +3,26 @@
     <li class="breadcrumb-item active">Consulta</li>
 </ol>
 <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>
+
+            <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>
+        </div>
+    </div>
+
     <form #consultarForm="ngForm" (submit)="consultar()">
         <div class="row">
             
             <div class="col-md-6">
                 <label for="inputArea">Pesquisar por área:</label>
-                <select [(ngModel)]="area" class="form-control" name="areaSelecionada">
-                    <option value="">Selecione...</option>
+                <select [(ngModel)]="areaSelecionada" class="form-control" name="areaSelecionada">
+                    
                     <option *ngFor="let area of areas" [value]="area">
                         {{ area?.name }}
                     </option>
@@ -48,7 +61,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let projeto of projetos">
+                    <tr *ngFor="let projeto of lista">
                         <td>{{ projeto?.id }}</td>
                         <td>{{ projeto.area?.name }}</td>
                         <td>{{ projeto?.name }}</td>

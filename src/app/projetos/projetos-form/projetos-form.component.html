@@ -22,7 +22,7 @@
                     <label>Área: </label>
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="areas">
+                            [(ngModel)]="projeto.area">
                         <option value="">Selecione...</option>
                         <option *ngFor="let area of areas" 
                                 [ngValue]="area">
@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <label>Data Inicial:</label>
                     <input class="form-control" 
-                            [(ngModel)]="projeto.id" type="datetime"
+                             type="datetime"
                             name="data-inicio" id="inputDataInicio">
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <label>Data Final (Planejado):</label>
                     <input class="form-control" 
-                            [(ngModel)]="projeto.id" type="datetime" 
+                             type="datetime" 
                             name="data-fim-plan" id="inputDataFinalPlan">
                 </div>
             </div>
@@ -68,19 +68,19 @@
 
         <div class="row">
             <div class="col-md-3">
-                <button type="submit" class="btn btn-success">
-                    <i class="fa fa-save"></i>
-                    Salvar
+                <button type="submit" class="btn btn-success" *ngIf="!projeto.id">
+                    <i class="fa fa-save"></i> Salvar
                 </button>
-                <button type="button" 
-                    routerLink="/projetos/lista"
-                    class="btn btn-danger ml-1">
-                    <i class="fa fa-arrow-alt-circle-left"></i>
-                    Voltar
+    
+                <button type="submit" class="btn btn-primary" *ngIf="projeto.id">
+                    <i class="fa fa-sync-alt"></i> Atualizar
+                </button>
+    
+                <button type="button" class="btn btn-danger ml-1" (click)="voltarParaListagem()">
+                    <i class="fa fa-arrow-alt-circle-left"></i> Voltar
                 </button>
             </div>
         </div>
-
     </form>
 </div>
 

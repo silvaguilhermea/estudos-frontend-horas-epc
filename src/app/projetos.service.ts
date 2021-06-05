@@ -21,7 +21,7 @@ export class ProjetosService {
   buscar( area: string ) : Observable<[]>{
     const httpParams = new HttpParams().set("area", area);
 
-    // /projeto?area=P41-PPH
+    // /projetos?area=P41-PPH
     const url = this.apiURL + "?" + httpParams.toString();
     console.log(url);
     return this.http.get<any>(url);
