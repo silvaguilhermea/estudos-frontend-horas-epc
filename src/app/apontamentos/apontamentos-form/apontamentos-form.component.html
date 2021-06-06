@@ -145,6 +145,15 @@
         </div>
 
         <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>Comentários: </label>
+                    <input type="text" [(ngModel)]="apontamento.comentario" name="comentario" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-3">
                 <button type="submit" class="btn btn-success" *ngIf="!apontamento.id">
                     <i class="fa fa-save"></i> Salvar

@@ -7,4 +7,5 @@ export class Apontamento {
     responsavel?: string;
     dataInicial?: string;
     dataFinal?: string;
+    comentario?: string;
 }

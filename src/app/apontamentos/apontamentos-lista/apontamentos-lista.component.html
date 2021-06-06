@@ -60,6 +60,7 @@
                         <th>Usuário(a)</th>
                         <th>Início</th>
                         <th>Fim</th>
+                        <th>Comentário</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -71,8 +72,9 @@
                         <td>{{ apontamento.setor }}</td>
                         <td>{{ apontamento.atividade }}</td>
                         <td>{{ apontamento.responsavel }}</td>
-                        <td>{{ apontamento.dataInicial }}</td>
-                        <td>{{ apontamento.dataFinal }}</td>
+                        <td>{{ apontamento.dataInicial | date: 'dd/MM/yyyy HH:mm' }}</td>
+                        <td>{{ apontamento.dataFinal | date: 'dd/MM/yyyy HH:mm' }}</td>
+                        <td>{{ apontamento.comentario }}</td>
                         <td>
                             <button class="btn btn-primary" 
                                     routerLink="/apontamentos/form/{{ apontamento.id }}">

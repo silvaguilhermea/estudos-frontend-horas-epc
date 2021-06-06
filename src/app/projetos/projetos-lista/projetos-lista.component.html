@@ -65,8 +65,8 @@
                         <td>{{ projeto?.id }}</td>
                         <td>{{ projeto.area?.name }}</td>
                         <td>{{ projeto?.name }}</td>
-                        <td>{{ projeto?.dataInicial }}</td>
-                        <td>{{ projeto?.dataFinal }}</td>
+                        <td>{{ projeto?.dataInicial | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{ projeto?.dataFinal | date: 'dd/MM/yyyy' }}</td>
                         <td>
                             <button class="btn btn-primary" 
                                     routerLink="/projetos/form/{{ projeto.id }}">
