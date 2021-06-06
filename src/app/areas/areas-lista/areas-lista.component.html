@@ -32,6 +32,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Área</th>
+                        <th>Descrição</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                     <tr *ngFor="let area of areas">
                         <td>{{ area?.id }}</td>
                         <td>{{ area?.name }}</td>
+                        <td>{{ area?.descricao }}</td>
                         <td>
                             <button class="btn btn-primary" 
                                     routerLink="/areas/form/{{ area.id }}">

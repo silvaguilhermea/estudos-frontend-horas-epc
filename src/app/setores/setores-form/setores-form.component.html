@@ -1,6 +1,6 @@
 <h1 class="mt-4">Setores</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">{{ setor.id ? 'Edição' : 'Cadastro' }}</li>
+    <li class="breadcrumb-item active">{{ setor?.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
     <form #setorForm="ngForm" (ngSubmit)="onSubmit()">
@@ -16,19 +16,27 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6" *ngIf="setor.id">
+            <div class="col-md-2" *ngIf="setor.id">
                 <div class="form-group">
                     <label>ID:</label>
                     <input type="text" [(ngModel)]="setor.id" name="id" class="form-control" disabled="true">
                 </div>
             </div>
     
-            <div class="col-md-6">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Sigla:</label>
+                    <input type="text" class="form-control" [(ngModel)]="setor.sigla" name="sigla">
+                </div>
+            </div>
+
+            <div class="col-md-8">
                 <div class="form-group">
                     <label>Setor:</label>
                     <input type="text" class="form-control" [(ngModel)]="setor.name" name="setor">
                 </div>
             </div>
+            
         </div>
 
         <div class="row">

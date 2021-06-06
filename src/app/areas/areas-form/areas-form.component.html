@@ -16,17 +16,24 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6" *ngIf="area?.id">
+            <div class="col-md-2" *ngIf="area?.id">
                 <div class="form-group">
                     <label>ID:</label>
                     <input type="text" [(ngModel)]="area.id" name="id" class="form-control" disabled="true">
                 </div>
             </div>
     
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Área:</label>
                     <input type="text" class="form-control" [(ngModel)]="area.name" name="area">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Descrição:</label>
+                    <input type="text" class="form-control" [(ngModel)]="area.descricao" name="descricao">
                 </div>
             </div>
         </div>

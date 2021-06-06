@@ -31,6 +31,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Sigla</th>
                         <th>Setor</th>
                         <th></th>
                     </tr>
@@ -38,6 +39,7 @@
                 <tbody>
                     <tr *ngFor="let setor of setores">
                         <td>{{ setor.id }}</td>
+                        <td>{{ setor.sigla }}</td>
                         <td>{{ setor.name }}</td>
                         <td>
                             <button class="btn btn-primary" 
