@@ -94,7 +94,7 @@ export class AtividadeFormComponent implements OnInit {
   }
 
   voltarParaListagem() {
-    this.router.navigate(['atividade/lista']);
+    this.router.navigate(['atividades/lista']);
   }
 
   listaProjetos(){
