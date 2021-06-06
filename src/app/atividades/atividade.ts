@@ -4,7 +4,7 @@ import { Usuario } from "../login/usuario";
 import { Projeto } from "../projetos/projeto";
 import { Setor } from "../setores/setor";
 
-export class DocAutomacao {
+export class Atividade {
     id?: number;
     name?: string;
     area?: Area;

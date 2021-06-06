@@ -3,8 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApontamentosService } from 'src/app/apontamentos.service';
 import { AreasService } from 'src/app/areas.service';
 import { Area } from 'src/app/areas/area';
-import { DocAutomacaoService } from 'src/app/doc-automacao.service';
-import { DocAutomacao } from 'src/app/doc-automacao/doc-automacao';
+import { AtividadesService } from 'src/app/atividades.service';
+import { Atividade } from 'src/app/atividades/atividade';
 import { Usuario } from 'src/app/usuarios/usuario';
 import { ProjetosService } from 'src/app/projetos.service';
 import { Projeto } from 'src/app/projetos/projeto';
@@ -35,9 +35,9 @@ export class ApontamentosFormComponent implements OnInit {
   setores?: Setor[]= [];
   setor?: Setor;
 
-  atividade: DocAutomacao;
-  docsAutomacao?: DocAutomacao[] = [];
-  atividadesFiltradas?: DocAutomacao[] = [];
+  atividade: Atividade;
+  atividades?: Atividade[] = [];
+  atividadesFiltradas?: Atividade[] = [];
 
   usuario?: Usuario;
   usuarios?: Usuario[] = [];
@@ -47,7 +47,7 @@ export class ApontamentosFormComponent implements OnInit {
     private serviceAreas: AreasService,
     private serviceProjetos: ProjetosService,
     private serviceSetores: SetoresService,
-    private serviceAtividades: DocAutomacaoService,
+    private serviceAtividades: AtividadesService,
     private serviceUsuarios: UsuariosService,
     private service: ApontamentosService,
     private router: Router,
@@ -78,8 +78,8 @@ export class ApontamentosFormComponent implements OnInit {
         .getSetores()
         .subscribe( resposta => { this.setores = resposta } );
       this.serviceAtividades
-        .getDocsAutomacao()
-        .subscribe( resposta => { this.docsAutomacao = resposta } ); 
+        .getAtividade()
+        .subscribe( resposta => { this.atividades = resposta } ); 
       this.serviceUsuarios
         .getUsuarios()
         .subscribe( resposta => { this.usuarios = resposta } ); 
@@ -98,7 +98,7 @@ export class ApontamentosFormComponent implements OnInit {
   }
 
   listaAtividades(){
-    let atvs = this.docsAutomacao?.filter((_atv) => {
+    let atvs = this.atividades?.filter((_atv) => {
       return _atv.projeto?.id === this.projeto?.id && _atv.setor?.id === this.setor?.id;
     })
     this.atividadesFiltradas = atvs;

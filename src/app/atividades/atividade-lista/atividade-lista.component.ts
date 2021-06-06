@@ -1,41 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AreasService } from 'src/app/areas.service';
-import { DocAutomacaoService } from 'src/app/doc-automacao.service';
+import { AtividadesService as AtividadeService } from 'src/app/atividades.service';
 import { ProjetosService } from 'src/app/projetos.service';
-import { DocAutomacao } from '../doc-automacao';
+import { Atividade } from '../atividade';
 import { Area } from '../../areas/area'
 import { Projeto } from 'src/app/projetos/projeto';
 
 @Component({
-  selector: 'app-doc-automacao-lista',
-  templateUrl: './doc-automacao-lista.component.html',
-  styleUrls: ['./doc-automacao-lista.component.css']
+  selector: 'app-atividade-lista',
+  templateUrl: './atividade-lista.component.html',
+  styleUrls: ['./atividade-lista.component.css']
 })
-export class DocAutomacaoListaComponent implements OnInit {
+export class AtividadeListaComponent implements OnInit {
 
   mensagemSucesso: string;
   mensagemErro: string;
   message: string;
-  docsAutomacao: DocAutomacao[] = [];
-  lista: DocAutomacao[] = [];
+  atividade: Atividade[] = [];
+  lista: Atividade[] = [];
   areas: Area[] = [];
   projeto: string;
   projetos: Projeto[] = [];
   projetoSelecionado: Projeto;
-  docAutomacaoSelecionado: DocAutomacao;
+  atividadeSelecionada: Atividade;
 
   constructor(
     private router: Router,
-    private service: DocAutomacaoService,
+    private service: AtividadeService,
     private serviceAreas: AreasService,
     private serviceProjetos: ProjetosService
   ) { }
 
   ngOnInit(): void {
     this.service
-      .getDocsAutomacao()
-      .subscribe( resposta => { this.docsAutomacao = resposta } );
+      .getAtividade()
+      .subscribe( resposta => { this.atividade = resposta } );
     this.serviceAreas
       .getAreas()
       .subscribe( resposta => { this.areas = resposta } );
@@ -45,7 +45,7 @@ export class DocAutomacaoListaComponent implements OnInit {
   }
 
   novoCadastro(){
-    this.router.navigate(['/doc-automacao/form']);
+    this.router.navigate(['/atividade/form']);
   }
 
   consultar() {
@@ -64,13 +64,13 @@ export class DocAutomacaoListaComponent implements OnInit {
       });
   }
 
-  preparaDelecao(docAutomacao: DocAutomacao){
-    this.docAutomacaoSelecionado = docAutomacao;
+  preparaDelecao(atividade: Atividade){
+    this.atividadeSelecionada = atividade;
   }
 
-  deletarDocAutomacao(){
+  deletarAtividade(){
     this.service
-    .deletar( this.docAutomacaoSelecionado )
+    .deletar( this.atividadeSelecionada )
     .subscribe(
       response => {
         this.mensagemSucesso = 'Atividade deletada com sucesso!',

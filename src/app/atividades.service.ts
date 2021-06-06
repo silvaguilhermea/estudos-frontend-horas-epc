@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { DocAutomacao } from "./doc-automacao/doc-automacao";
+import { Atividade } from "./atividades/atividade";
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
-export class DocAutomacaoService {
+export class AtividadesService {
 
   apiURL: string = environment.apiURLBase + '/atividades';
 
   constructor( private http: HttpClient ) { }
 
-  salvar( docAutomacao: DocAutomacao ) : Observable<DocAutomacao> {
-    return this.http.post<DocAutomacao>( `${this.apiURL}` , docAutomacao );
+  salvar( atividade: Atividade ) : Observable<Atividade> {
+    return this.http.post<Atividade>( `${this.apiURL}` , atividade );
   }
 
   buscar( projeto: string ) : Observable<[]>{
@@ -27,19 +27,19 @@ export class DocAutomacaoService {
     return this.http.get<any>(url);
   }
  
-  atualizar( docAutomacao: DocAutomacao ) : Observable<any> {
-    return this.http.put<DocAutomacao>(`${this.apiURL}/${docAutomacao.id}`, docAutomacao);
+  atualizar( atividade: Atividade ) : Observable<any> {
+    return this.http.put<Atividade>(`${this.apiURL}/${atividade.id}`, atividade);
   }
  
-  getDocsAutomacao() : Observable<DocAutomacao[]> {
-    return this.http.get<DocAutomacao[]>( this.apiURL );
+  getAtividade() : Observable<Atividade[]> {
+    return this.http.get<Atividade[]>( this.apiURL );
   }
  
-  getDocAutomacaoById(id: number) : Observable<DocAutomacao> {
+  getAtividadeById(id: number) : Observable<Atividade> {
     return this.http.get<any>(`${this.apiURL}/${id}`);
   }
 
-  deletar( docAutomacao: DocAutomacao ) : Observable<any> {
-    return this.http.delete<any>(`${this.apiURL}/${docAutomacao.id}`);
+  deletar( atividade: Atividade ) : Observable<any> {
+    return this.http.delete<any>(`${this.apiURL}/${atividade.id}`);
   }
 }

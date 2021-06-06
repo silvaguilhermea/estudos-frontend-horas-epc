@@ -13,7 +13,7 @@ import { UsuariosService } from './usuarios.service';
 import { AreasService } from './areas.service';
 import { SetoresService } from './setores.service'; 
 import { EstadoService } from './estado.service';
-import { DocAutomacaoService } from './doc-automacao.service';
+import { AtividadesService } from './atividades.service';
 import { ProjetosService } from './projetos.service';
 import { ApontamentosService } from './apontamentos.service';
 
@@ -24,7 +24,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { AreasModule } from './areas/areas.module';
 import { SetoresModule } from './setores/setores.module';
 import { EstadoModule } from './estado/estado.module';
-import { DocAutomacaoModule } from './doc-automacao/doc-automacao.module';
+import { AtividadeModule } from './atividades/atividade.module';
 import { ProjetosModule } from './projetos/projetos.module';
 import { ApontamentosModule } from './apontamentos/apontamentos.module';
 
@@ -46,7 +46,7 @@ import { ApontamentosModule } from './apontamentos/apontamentos.module';
     AreasModule,
     SetoresModule,
     EstadoModule,
-    DocAutomacaoModule,
+    AtividadeModule,
     ProjetosModule,
     ApontamentosModule
   ],
@@ -55,7 +55,7 @@ import { ApontamentosModule } from './apontamentos/apontamentos.module';
     AreasService,
     SetoresService,
     EstadoService,
-    DocAutomacaoService,
+    AtividadesService,
     ProjetosService,
     ApontamentosService
   ],

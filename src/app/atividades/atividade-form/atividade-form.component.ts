@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AreasService } from 'src/app/areas.service';
 import { Area } from 'src/app/areas/area';
-import { DocAutomacaoService } from 'src/app/doc-automacao.service';
+import { AtividadesService } from 'src/app/atividades.service';
 import { EstadoService } from 'src/app/estado.service';
 import { Estado } from 'src/app/estado/estado';
 import { Usuario } from 'src/app/usuarios/usuario';
@@ -11,17 +11,17 @@ import { Projeto } from 'src/app/projetos/projeto';
 import { SetoresService } from 'src/app/setores.service';
 import { Setor } from 'src/app/setores/setor';
 import { UsuariosService } from 'src/app/usuarios.service';
-import { DocAutomacao } from "../doc-automacao";
+import { Atividade } from "../atividade";
 
 @Component({
-  selector: 'app-doc-automacao-form',
-  templateUrl: './doc-automacao-form.component.html',
-  styleUrls: ['./doc-automacao-form.component.css']
+  selector: 'app-atividade-form',
+  templateUrl: './atividade-form.component.html',
+  styleUrls: ['./atividade-form.component.css']
 })
-export class DocAutomacaoFormComponent implements OnInit {
+export class AtividadeFormComponent implements OnInit {
 
-  docAutomacao: DocAutomacao;
-  docsAutomacao?: DocAutomacao[] = [];
+  atividade: Atividade;
+  atividades?: Atividade[] = [];
   success: boolean = false;
   errors: String[];
   id: number;
@@ -38,7 +38,7 @@ export class DocAutomacaoFormComponent implements OnInit {
   estados?: Estado[] = [];
 
   constructor(
-    private service: DocAutomacaoService,
+    private service: AtividadesService,
     private serviceAreas: AreasService,
     private serviceProjetos: ProjetosService,
     private serviceSetores: SetoresService,
@@ -47,7 +47,7 @@ export class DocAutomacaoFormComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    this.docAutomacao = new DocAutomacao();
+    this.atividade = new Atividade();
    }
 
   ngOnInit(): void {
@@ -55,15 +55,15 @@ export class DocAutomacaoFormComponent implements OnInit {
     if(params && params.value && params.value.id){
       this.id = params.value.id;
       this.service
-      .getDocAutomacaoById( this.id )
+      .getAtividadeById( this.id )
       .subscribe(
         response => { 
-          this.docAutomacao = response,
-          this.nomeArea = this.docAutomacao.projeto?.area?.name, 
-          this.nomeProjeto = this.docAutomacao.projeto?.name,
-          this.nomeSetor = this.docAutomacao.setor?.name;
+          this.atividade = response,
+          this.nomeArea = this.atividade.projeto?.area?.name, 
+          this.nomeProjeto = this.atividade.projeto?.name,
+          this.nomeSetor = this.atividade.setor?.name;
         },
-        errorResponse => this.docAutomacao = new DocAutomacao()
+        errorResponse => this.atividade = new Atividade()
       );
       this.serviceEstados
         .getEstados()
@@ -73,8 +73,8 @@ export class DocAutomacaoFormComponent implements OnInit {
         .subscribe( resposta => { this.usuarios = resposta } );
     } else {
       this.service
-        .getDocsAutomacao()
-        .subscribe( resposta => { this.docsAutomacao = resposta } );
+        .getAtividade()
+        .subscribe( resposta => { this.atividades = resposta } );
       this.serviceAreas
         .getAreas()
         .subscribe( resposta => { this.areas = resposta } );
@@ -94,7 +94,7 @@ export class DocAutomacaoFormComponent implements OnInit {
   }
 
   voltarParaListagem() {
-    this.router.navigate(['doc-automacao/lista']);
+    this.router.navigate(['atividade/lista']);
   }
 
   listaProjetos(){
@@ -108,7 +108,7 @@ export class DocAutomacaoFormComponent implements OnInit {
     if( this.id ) {
 
       this.service
-      .atualizar( this.docAutomacao )
+      .atualizar( this.atividade )
       .subscribe( response => {
         this.success = true;
         this.errors = [];
@@ -119,12 +119,12 @@ export class DocAutomacaoFormComponent implements OnInit {
 
     } else {
 
-      this.service.salvar(this.docAutomacao)
+      this.service.salvar(this.atividade)
       .subscribe( response => {
         this.success = true;
         this.errors = [];
-        this.docAutomacao = response;
-        console.log(this.docAutomacao);
+        this.atividade = response;
+        console.log(this.atividade);
         console.log(response);
       } , errorResponse => {
         this.success = false;

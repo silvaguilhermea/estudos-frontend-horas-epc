@@ -1,6 +1,6 @@
 <h1 class="mt-4">Atividades</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">{{ docAutomacao?.id ? 'Edição' : 'Cadastro' }}</li>
+    <li class="breadcrumb-item active">{{ atividade?.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
     <form #docAutomacaoForm="ngForm" (ngSubmit)="onSubmit()">
@@ -16,7 +16,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-4" *ngIf="!docAutomacao?.id">
+            <div class="col-md-4" *ngIf="!atividade?.id">
                 <div class="form-group">
                     <label>Área: </label>
                     <select class="form-control"
@@ -30,19 +30,19 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-4" *ngIf="docAutomacao?.id">
+            <div class="col-md-4" *ngIf="atividade?.id">
                 <div class="form-group">
                     <label>Área: </label>
                     <input type="text" [(ngModel)]="this.nomeArea" name="area" class="form-control" disabled="true">
                 </div>
             </div>
 
-            <div class="col-md-4" *ngIf="!docAutomacao?.id">
+            <div class="col-md-4" *ngIf="!atividade?.id">
                 <div class="form-group">
                     <label>Projeto: </label>
                     <select class="form-control" (click)="listaProjetos()"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="docAutomacao.projeto">
+                            [(ngModel)]="atividade.projeto">
                         <option value="">Selecione...</option>
                         <option *ngFor="let projeto of projetosFiltrados" 
                                 [ngValue]="projeto">
@@ -51,7 +51,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-4" *ngIf="docAutomacao?.id">
+            <div class="col-md-4" *ngIf="atividade?.id">
                 <div class="form-group">
                     <label>Projeto: </label>
                     <input type="text" [(ngModel)]="this.nomeProjeto" name="projeto" class="form-control" disabled="true">
@@ -61,18 +61,18 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Atividade:</label>
-                    <input type="text" class="form-control" [(ngModel)]="docAutomacao.name" name="atividade">
+                    <input type="text" class="form-control" [(ngModel)]="atividade.name" name="atividade">
                 </div>
             </div> 
         </div>
 
         <div class="row">
-            <div class="col-md-4" *ngIf="!docAutomacao?.id">
+            <div class="col-md-4" *ngIf="!atividade?.id">
                 <div class="form-group">
                     <label>Setor: </label>
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="docAutomacao.setor">
+                            [(ngModel)]="atividade.setor">
                         <option value="">Selecione...</option>
                         <option *ngFor="let setor of setores" 
                                 [ngValue]="setor">
@@ -81,19 +81,19 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-4" *ngIf="docAutomacao?.id">
+            <div class="col-md-4" *ngIf="atividade?.id">
                 <div class="form-group">
                     <label>Setor: </label>
                     <input type="text" [(ngModel)]="this.nomeSetor" name="setor" class="form-control" disabled="true">
                 </div>
             </div>
 
-            <div class="col-md-4" *ngIf="!docAutomacao?.id">
+            <div class="col-md-4" *ngIf="!atividade?.id">
                 <div class="form-group">
                     <label>Responsável: </label>
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="docAutomacao.usuario">
+                            [(ngModel)]="atividade.usuario">
                         <option value="">Selecione...</option>
                         <option *ngFor="let usuario of usuarios" 
                                 [ngValue]="usuario">
@@ -102,14 +102,14 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-4" *ngIf="docAutomacao?.id">
+            <div class="col-md-4" *ngIf="atividade?.id">
                 <div class="form-group">
                     <label>Responsável: </label>
-                    <input type="text" [(ngModel)]="docAutomacao.usuario.name" name="responsavel" class="form-control" disabled="true">
+                    <input type="text" [(ngModel)]="atividade.usuario.name" name="responsavel" class="form-control" disabled="true">
                 
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="docAutomacao.usuario">
+                            [(ngModel)]="atividade.usuario">
                         <option selected [value]="">Selecione...</option>
                         <option *ngFor="let usuario of usuarios" 
                                 [ngValue]="usuario">
@@ -119,12 +119,12 @@
                 </div>
             </div>
 
-            <div class="col-md-4" *ngIf="!docAutomacao?.id">
+            <div class="col-md-4" *ngIf="!atividade?.id">
                 <div class="form-group">
                     <label>Status: </label>
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="docAutomacao.estado">
+                            [(ngModel)]="atividade.estado">
                         <option value="">Selecione...</option>
                         <option *ngFor="let estado of estados" 
                                 [ngValue]="estado">
@@ -133,14 +133,14 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-4" *ngIf="docAutomacao?.id">
+            <div class="col-md-4" *ngIf="atividade?.id">
                 <div class="form-group">
                     <label>Status: </label>
-                    <input type="text" [(ngModel)]="docAutomacao.estado.name" name="status" class="form-control" disabled="true">
+                    <input type="text" [(ngModel)]="atividade.estado.name" name="status" class="form-control" disabled="true">
 
                     <select class="form-control"
                             [ngModelOptions]="{standalone: true}"
-                            [(ngModel)]="docAutomacao.estado">
+                            [(ngModel)]="atividade.estado">
                         <option selected [value]="">Selecione...</option>
                         <option *ngFor="let estado of estados" 
                                 [ngValue]="estado">
@@ -154,11 +154,11 @@
 
         <div class="row">
             <div class="col-md-3">
-                <button type="submit" class="btn btn-success" *ngIf="!docAutomacao.id">
+                <button type="submit" class="btn btn-success" *ngIf="!atividade.id">
                     <i class="fa fa-save"></i> Salvar
                 </button>
     
-                <button type="submit" class="btn btn-primary" *ngIf="docAutomacao.id">
+                <button type="submit" class="btn btn-primary" *ngIf="atividade.id">
                     <i class="fa fa-sync-alt"></i> Atualizar
                 </button>
     

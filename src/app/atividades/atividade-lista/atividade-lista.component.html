@@ -40,7 +40,7 @@
                 </button>
 
                 <button type="button" 
-                    routerLink="/doc-automacao/form"
+                    routerLink="/atividades/form"
                     class="btn btn-warning ml-1">
                     <i class="fa fa-plus"></i> Nova
                 </button>
@@ -64,21 +64,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let docAutomacao of lista">
-                        <td>{{ docAutomacao?.id }}</td>
-                        <td>{{ docAutomacao?.projeto?.area?.name }}</td>
-                        <td>{{ docAutomacao.projeto?.name }}</td>
-                        <td>{{ docAutomacao.setor?.name }}</td>
-                        <td>{{ docAutomacao?.name }}</td>
-                        <td>{{ docAutomacao.usuario?.name }}</td>
-                        <td>{{ docAutomacao.estado?.name }}</td>
+                    <tr *ngFor="let atividade of lista">
+                        <td>{{ atividade?.id }}</td>
+                        <td>{{ atividade?.projeto?.area?.name }}</td>
+                        <td>{{ atividade.projeto?.name }}</td>
+                        <td>{{ atividade.setor?.name }}</td>
+                        <td>{{ atividade?.name }}</td>
+                        <td>{{ atividade.usuario?.name }}</td>
+                        <td>{{ atividade.estado?.name }}</td>
                         <td>
                             <button class="btn btn-primary" 
-                                    routerLink="/doc-automacao/form/{{ docAutomacao.id }}">
+                                    routerLink="/atividades/form/{{ atividade.id }}">
                                 <i class="fa fa-edit"></i>
                             </button>
                             
-                            <button class="btn btn-danger ml-1" (click)="preparaDelecao(docAutomacao)"
+                            <button class="btn btn-danger ml-1" (click)="preparaDelecao(atividade)"
                                     data-toggle="modal" data-target="#modalDelecao">
                                 <i class="fa fa-trash"></i>
                             </button>
@@ -95,11 +95,11 @@
                 <div class="modal-header">
                     <h4>Confirmação</h4>
                 </div>
-                <div class="modal-body" *ngIf="docAutomacaoSelecionado">
-                    Confirma a deleção do cadastro da atividade {{ docAutomacaoSelecionado.name }}?
+                <div class="modal-body" *ngIf="atividadeSelecionada">
+                    Confirma a deleção do cadastro da atividade {{ atividadeSelecionada.name }}?
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" (click)="deletarDocAutomacao()" data-dismiss="modal">Confirmar</button>
+                    <button class="btn btn-success" (click)="deletarAtividade()" data-dismiss="modal">Confirmar</button>
                     <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
