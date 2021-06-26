@@ -31,10 +31,10 @@ export class ApontamentosListaComponent implements OnInit {
   ngOnInit(): void {
     this.service
       .getApontamentos()
-      .subscribe( resposta => {this.apontamentos = resposta, console.log(resposta)} );
+      .subscribe( resposta => {this.apontamentos = resposta} );
     this.serviceUsuarios
       .getUsuarios()
-      .subscribe( resposta => {this.usuarios = resposta, console.log(resposta)} );
+      .subscribe( resposta => {this.usuarios = resposta} );
   }
 
   novoCadastro(){
@@ -46,7 +46,7 @@ export class ApontamentosListaComponent implements OnInit {
       this.usuario = this.usuarioSelecionado.name;
     }
     this.service
-      .buscar( this.usuario )
+      .getApontamentosOrdenadoPorUsuario( this.usuario )
       .subscribe( response => {
         this.lista = response;
         if( this.lista.length <= 0 ){

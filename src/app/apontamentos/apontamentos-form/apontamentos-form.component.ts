@@ -63,7 +63,7 @@ export class ApontamentosFormComponent implements OnInit {
       this.service
       .getApontamentoById( this.id )
       .subscribe(
-        response => {this.apontamento = response, console.log("Apontamento: ", this.apontamento)},
+        response => {this.apontamento = response},
         errorResponse => this.apontamento = new Apontamento()
       )
       
@@ -131,12 +131,9 @@ export class ApontamentosFormComponent implements OnInit {
         this.success = true;
         this.errors = [];
         this.apontamento = response;
-        console.log("Apontamento: ", this.apontamento);
-        console.log("Resposta: ", response);
       } , errorResponse => {
         this.success = false;
         this.errors = errorResponse.error.errors;
-        console.log(this.apontamento);
       })
 
     }

@@ -20,8 +20,10 @@ export class AtividadeListaComponent implements OnInit {
   atividade: Atividade[] = [];
   lista: Atividade[] = [];
   areas: Area[] = [];
+  area: Area;
   projeto: string;
   projetos: Projeto[] = [];
+  projetosFiltrados: Projeto[] = [];
   projetoSelecionado: Projeto;
   atividadeSelecionada: Atividade;
 
@@ -53,7 +55,7 @@ export class AtividadeListaComponent implements OnInit {
       this.projeto = this.projetoSelecionado.name;
     }
     this.service
-      .buscar( this.projeto )
+      .getAtividadesOrdenadasPorProjeto( this.projeto )
       .subscribe( response => {
         this.lista = response;
         if( this.lista.length <= 0 ){
@@ -62,6 +64,13 @@ export class AtividadeListaComponent implements OnInit {
           this.message = 'Registro(s) encontrado(s)';
         }
       });
+  }
+
+  listaProjetos(){
+    let projs = this.projetos?.filter((_proj) => {
+      return _proj.area?.id === this.area?.id;
+    })
+    this.projetosFiltrados = projs;
   }
 
   preparaDelecao(atividade: Atividade){

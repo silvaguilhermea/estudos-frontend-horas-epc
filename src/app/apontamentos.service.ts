@@ -18,22 +18,17 @@ export class ApontamentosService {
   salvar( apontamento: Apontamento ) : Observable<Apontamento> {
     return this.http.post<Apontamento>( `${this.apiURL}` , apontamento );
   }
-
-  buscar( usuario: string ) : Observable<[]>{
-    const httpParams = new HttpParams().set("responsavel", usuario);
-
-    // /apontamentos?responsavel=Guilherme
-    const url = this.apiURL + "?" + httpParams.toString();
-    console.log(url);
-    return this.http.get<any>(url);
-  }
- 
+  
   atualizar( apontamento: Apontamento ) : Observable<any> {
     return this.http.put<Apontamento>(`${this.apiURL}/${apontamento.id}`, apontamento);
   }
  
   getApontamentos() : Observable<Apontamento[]> {
     return this.http.get<Apontamento[]>( this.apiURL );
+  }
+
+  getApontamentosOrdenadoPorUsuario(attribute: string) : Observable<Apontamento[]> {
+    return this.http.get<Apontamento[]>(`${this.apiURL}/responsavel/${attribute}`);
   }
  
   getApontamentoById(id: number) : Observable<Apontamento> {

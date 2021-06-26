@@ -18,17 +18,12 @@ export class ProjetosService {
     return this.http.post<Projeto>(this.apiURL, projeto);
   }
 
-  buscar( area: string ) : Observable<[]>{
-    const httpParams = new HttpParams().set("area", area);
-
-    // /projetos?area=P41-PPH
-    const url = this.apiURL + "?" + httpParams.toString();
-    console.log(url);
-    return this.http.get<any>(url);
+  getProjetos() : Observable<Projeto[]> {
+    return this.http.get<Projeto[]>( this.apiURL );
   }
 
-  getProjetos() : Observable<Projeto[]> {
-    return this.http.get<Area[]>( this.apiURL );
+  getProjetosOrdenadosPorArea(attribute: string) : Observable<Projeto[]> {
+    return this.http.get<Projeto[]>(`${this.apiURL}/area/${attribute}`);
   }
 
   getProjetoById(id: number) : Observable<Projeto> {

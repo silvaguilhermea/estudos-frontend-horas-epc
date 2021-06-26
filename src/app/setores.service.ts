@@ -3,7 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { Setor } from './setores/setor';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'

@@ -24,6 +24,7 @@ export class SetoresListaComponent implements OnInit {
     this.service
       .getSetores()
       .subscribe( resposta => {this.setores = resposta, console.log(resposta)} );
+    
   }
 
   novoCadastro(){

@@ -13,7 +13,7 @@ import { Projeto } from "../projeto";
 })
 export class ProjetosListaComponent implements OnInit {
 
-  area: string;
+  nomeArea: string;
   areas: Area[] = [];
   areaSelecionada: Area;
   projetos: Projeto[] = [];
@@ -34,9 +34,6 @@ export class ProjetosListaComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.service
-      .getProjetos()
-      .subscribe( resposta => { this.projetos = resposta } );
     this.serviceAreas
       .getAreas()
       .subscribe( resposta => { this.areas = resposta } );
@@ -48,10 +45,10 @@ export class ProjetosListaComponent implements OnInit {
 
   consultar() {
     if ( this.areaSelecionada.name ) {
-      this.area = this.areaSelecionada.name;
+      this.nomeArea = this.areaSelecionada.name;
     }
     this.service
-      .buscar( this.area )
+      .getProjetosOrdenadosPorArea( this.nomeArea )
       .subscribe( response => {
         this.lista = response;
         if( this.lista.length <= 0 ){
